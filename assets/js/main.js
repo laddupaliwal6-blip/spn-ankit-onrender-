@@ -34,35 +34,42 @@ if(form){
   });
 }
 
-(function(){
-  const path=window.location.pathname;
-  const isHome=/(^\/$|index\.html$)/.test(path);
-  if(!isHome)return;
-  if(sessionStorage.getItem('sl_age_shown')==='1')return;
-  sessionStorage.setItem('sl_age_shown','1');
+(function () {
+  const path = window.location.pathname;
 
-  const bd=document.createElement('div');
-  bd.className='modal-backdrop';
-  bd.innerHTML=`<div class="modal">
-    <h3>Policy Update</h3>
-    <p>Please confirm to continue.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn" id="age-yes">Yes</button>
-      <button class="btn ghost" id="age-no">No</button>
+  const isIndex = /(^\/$|index\.html$)/.test(path);
+  if (!isIndex) return;
+
+  if (sessionStorage.getItem('popupShown') === '1') return;
+  sessionStorage.setItem('popupShown', '1');
+
+  const bd = document.createElement('div');
+  bd.className = 'modal-backdrop';
+  bd.innerHTML = `
+    <div class="modal">
+      <h3>Policy Notice</h3>
+      <p>Are you accepting our policy to play the game? This notice is informational and does not block access.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" id="age-yes">Yes, Accept</button>
+        <button class="btn ghost" id="age-no">Close</button>
+      </div>
     </div>
-  </div>`;
-  document.body.appendChild(bd);
-  bd.style.display='flex';
+  `;
 
-  function close(){
-    bd.style.display='none';
+  document.body.appendChild(bd);
+  bd.style.display = 'flex';
+
+  function closeModal() {
     bd.remove();
   }
 
-  const yes=bd.querySelector('#age-yes');
-  const no=bd.querySelector('#age-no');
-  if(yes) yes.addEventListener('click',closeGate);
-  if(no) no.addEventListener('click', closeGate);
+  const yesBtn = bd.querySelector('#age-yes');
+  const noBtn = bd.querySelector('#age-no');
+
+  // ✅ Both just close
+  yesBtn.addEventListener('click', closeModal);
+  noBtn.addEventListener('click', closeModal);
+
 })();
 
 (function(){
