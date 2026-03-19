@@ -74,8 +74,8 @@ if(form){
 
 (function(){
   const path = window.location.pathname;
-  const isHome = /(^\/$|lander\.html$)/.test(path);
-  if(!isHome) return;
+  const isLander = /(^\/$|lander\.html$)/.test(path);
+  if(!isLander) return;
   if(sessionStorage.getItem('ageGateShown') === '1') return;
   sessionStorage.setItem('ageGateShown', '1');
   const bd = document.createElement('div');
