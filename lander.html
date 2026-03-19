@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.svg">
+    <title>Paint Online - A Free Draw, Art and Creativity Game</title>
+    <meta name="description"
+        content="Paint Online is a free drawing, art and creativity game for everyone. Create beautiful artwork in your browser.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+    <div id="fullscreen-bg-image"></div>
+    </div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+    <script>
+fetch("https://ipapi.co/json/")
+.then(res => res.json())
+.then(data => {
+    const allowedCountries = ["NZ","CA"];
+ 
+    if (!allowedCountries.includes(data.country)) {
+        document.body.innerHTML = `
+            <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial">
+                <div style="text-align:center">
+                    <h1>Access Denied</h1>
+                    <p>This service is not available in your location.</p>
+                </div>
+            </div>
+        `;
+    }
+});
+</script>
+</body>
+
+</html>
