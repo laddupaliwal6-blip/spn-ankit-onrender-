@@ -19,24 +19,6 @@
     </div>
     </footer>
     <script src="assets/js/main.js"></script>
-    <script>
-fetch("https://ipapi.co/json/")
-.then(res => res.json())
-.then(data => {
-    const allowedCountries = ["NZ","CA"];
- 
-    if (!allowedCountries.includes(data.country)) {
-        document.body.innerHTML = `
-            <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial">
-                <div style="text-align:center">
-                    <h1>Access Denied</h1>
-                    <p>This service is not available in your location.</p>
-                </div>
-            </div>
-        `;
-    }
-});
-</script>
 </body>
 
 </html>
